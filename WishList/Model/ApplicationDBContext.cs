@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WishList.Model
 {
-    public class ApplicationDBContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
         private readonly DbContextOptions dbContextOptions;
 
-        public ApplicationDBContext(
+        public ApplicationDbContext(
             DbContextOptions dbContextOptions) : base(dbContextOptions)
         {
             this.dbContextOptions = dbContextOptions;

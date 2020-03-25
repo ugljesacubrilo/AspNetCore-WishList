@@ -1,0 +1,8 @@
+﻿@model Item
+
+<h3>Add item to wishlist</h3>
+<form method="post" asp-action="Create" asp-controller="Item">
+    <input asp-for="Description" />
+    <span asp-validation-for="Description" />
+    <button type="submit">Add item</button>
+</form>

@@ -9,10 +9,10 @@ namespace WishList.Controllers
 {
     public class ItemController : Controller
     {
-        private readonly ApplicationDnContext applicationDBContext;
+        private readonly ApplicationDbContext applicationDBContext;
 
         public ItemController(
-            ApplicationDnContext applicationDBContext)
+            ApplicationDbContext applicationDBContext)
         {
             this.applicationDBContext = applicationDBContext;
         }

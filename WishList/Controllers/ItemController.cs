@@ -12,12 +12,11 @@ namespace WishList.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        public ItemController(
-            ApplicationDbContext applicationDBContext)
+        public ItemController(ApplicationDbContext context)
         {
-            this._context = applicationDBContext;
+            _context = context;
         }
-        
+
         public IActionResult Index()
         {
             var model = _context.Items.ToList();
@@ -31,29 +30,18 @@ namespace WishList.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(
-            Item item)
+        public IActionResult Create(Models.Item item)
         {
-            if (ModelState.IsValid &&
-                item != null)
-            {
-                _context.Items.Add(item);
-                _context.SaveChanges();
-            }
-
+            _context.Items.Add(item);
+            _context.SaveChanges();
             return RedirectToAction("Index");
         }
 
         public IActionResult Delete(int id)
         {
-            var itemToDelete = _context.Items.FirstOrDefault(i => i.Id == id);
-
-            if (itemToDelete != null)
-            {
-                _context.Items.Remove(itemToDelete);
-                _context.SaveChanges();
-            }
-
+            var item = _context.Items.FirstOrDefault(e => e.Id == id);
+            _context.Items.Remove(item);
+            _context.SaveChanges();
             return RedirectToAction("Index");
         }
     }
